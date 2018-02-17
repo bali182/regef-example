@@ -1,6 +1,6 @@
 export const SET_POSITION = 'SET_POSITION'
 export const SET_SELECTION = 'SET_SELECTION'
-export const ADD_CHILD = 'ADD_CHILD'
+export const ADD_CHILDREN = 'ADD_CHILD'
 export const SET_CHILDREN = 'SET_CHILDREN'
 export const ADD_CONNECTION = 'ADD_CONNECTION'
 export const DELETE_COMPONENT = 'DELETE_NODE'
@@ -21,11 +21,12 @@ export const deleteComponent = ({ id }) => ({
   },
 })
 
-export const addChild = ({ id, childId }) => ({
-  type: ADD_CHILD,
+export const addChildren = ({ containerId, children, index }) => ({
+  type: ADD_CHILDREN,
   payload: {
-    id,
-    childId,
+    containerId,
+    children,
+    index,
   },
 })
 

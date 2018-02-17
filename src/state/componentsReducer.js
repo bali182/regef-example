@@ -1,5 +1,11 @@
-import { ADD_CHILD, SET_POSITION, DELETE_COMPONENT, ADD_CONNECTION, SET_CHILDREN } from './actions'
+import { ADD_CHILDREN, SET_POSITION, DELETE_COMPONENT, ADD_CONNECTION, SET_CHILDREN } from './actions'
 import initialState from './initialState'
+
+const insert = (array, index, items) => [
+  ...array.slice(0, index),
+  ...items,
+  ...array.slice(index),
+]
 
 const withAllNestedChildren = (state, id, children = []) => {
   children.push(id)
@@ -16,17 +22,23 @@ const withAllNestedChildren = (state, id, children = []) => {
 
 const componentsReducer = (state = initialState.components, { type, payload }) => {
   switch (type) {
-    case ADD_CHILD: {
-      const { id, childId } = payload
-      return Object.keys(state).map((itId) => {
-        const node = state[itId]
-        if (itId === id) {
-          return [itId, { ...node, children: node.children.concat([childId]) }]
-        } else if (node.children.indexOf(childId) >= 0) {
-          return [itId, { ...node, children: node.children.filter((cId) => cId !== childId) }]
+    case ADD_CHILDREN: {
+      const { containerId, children, index } = payload
+      return Object.keys(state).map((id) => {
+        const node = state[id]
+        if (id === containerId) {
+          return [id, {
+            ...node,
+            children: insert(node.children, index, children),
+          }]
+        } else if (Array.isArray(node.children)) {
+          return [id, {
+            ...node,
+            children: node.children.filter((cId) => children.indexOf(cId) < 0),
+          }]
         }
-        return [itId, node]
-      }).reduce((newState, [itId, node]) => ({ ...newState, [itId]: node }), {})
+        return [id, node]
+      }).reduce((newState, [id, node]) => ({ ...newState, [id]: node }), {})
     }
     case SET_POSITION: {
       const { id, x, y } = payload

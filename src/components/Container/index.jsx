@@ -5,7 +5,7 @@ import { node } from 'regef'
 import ContainerView from './ContainerView'
 import Step from '../Step'
 import ContainerEditPolicy from './ContainerEditPolicy'
-import { setChildren } from '../../state/actions'
+import { setChildren, addChildren } from '../../state/actions'
 import LineFeedback from './LineFeedback'
 
 const stateToProps = ({ components, selection }, { id }) => ({
@@ -14,7 +14,7 @@ const stateToProps = ({ components, selection }, { id }) => ({
   components,
 })
 
-@connect(stateToProps, { setChildren })
+@connect(stateToProps, { setChildren, addChildren })
 @node(ContainerEditPolicy)
 export default class Container extends React.Component {
   constructor() {

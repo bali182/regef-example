@@ -1,4 +1,5 @@
 import { DispatchingEditPolicy } from 'regef'
+import Step from '../Step'
 
 export default class ContainerEditPolicy extends DispatchingEditPolicy {
   moveChild({ components, location }) {
@@ -22,6 +23,21 @@ export default class ContainerEditPolicy extends DispatchingEditPolicy {
     component.props.setChildren({
       id: component.props.id,
       children: newState,
+    })
+  }
+
+  addChild({ components, location }) {
+    const { component } = this
+    const children = this.toolkit.children(component)
+    if (components.some((child) => children.indexOf(child) >= 0 || (child instanceof Step))) {
+      return
+    }
+    const index = this.insertionIndex(children, location)
+    const ids = components.map((child) => child.props.id)
+    component.props.addChildren({
+      containerId: component.props.id,
+      children: ids,
+      index,
     })
   }
 

@@ -15,7 +15,7 @@ const lineStyle = {
   height: '100%',
   boxSizing: 'content-box',
   userSelect: 'none',
-  borderLeft: '1px dashed #ccc',
+  borderLeft: '1px dashed #006db6',
 }
 
 const LineFeedback = () => (<div style={containerStyle}>

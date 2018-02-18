@@ -26,29 +26,25 @@ export default class Container extends React.Component {
 
   renderChildren() {
     const { components, container: { children } } = this.props
-    const childEls = []
-    if (this.state.insertionFeedback === 0) {
-      childEls.push(<LineFeedback first key="feedback" />)
-    }
-    for (let i = 0; i < children.length; i += 1) {
-      if (this.state.insertionFeedback === i && i > 0) {
-        childEls.push(<LineFeedback key="feedback" />)
-      }
-      const id = children[i]
-      const component = components[id]
-      switch (component.type) {
+    const { insertionFeedback } = this.state
+    const childComponents = children.map((id) => {
+      const { type } = components[id]
+      switch (type) {
         case 'STEP': {
-          childEls.push(<Step id={id} key={id} />)
-          break
+          return <Step id={id} key={id} />
         }
         default:
-          throw new TypeError(`Expected child STEP got ${component.type} instead`)
+          throw new TypeError(`Expected child STEP got "${type}" instead`)
       }
+    })
+    if (insertionFeedback !== null) {
+      return [
+        ...childComponents.slice(0, insertionFeedback),
+        <LineFeedback key="feedback" />,
+        ...childComponents.slice(insertionFeedback),
+      ]
     }
-    if (this.state.insertionFeedback === children.length) {
-      childEls.push(<LineFeedback last key="feedback" />)
-    }
-    return childEls
+    return childComponents
   }
 
   render() {

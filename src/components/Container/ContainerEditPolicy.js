@@ -1,5 +1,4 @@
 import { DispatchingEditPolicy } from 'regef'
-import Step from '../Step'
 
 export default class ContainerEditPolicy extends DispatchingEditPolicy {
   moveChild({ components, location }) {
@@ -29,7 +28,7 @@ export default class ContainerEditPolicy extends DispatchingEditPolicy {
   addChild({ components, location }) {
     const { component } = this
     const children = this.toolkit.children(component)
-    if (components.some((child) => children.indexOf(child) >= 0 || (child instanceof Step))) {
+    if (components.some((comp) => children.indexOf(comp) >= 0 || !comp.props.step)) {
       return
     }
     const index = this.insertionIndex(children, location)
@@ -54,13 +53,20 @@ export default class ContainerEditPolicy extends DispatchingEditPolicy {
     }
   }
 
-  requestAddChildFeedback({ delta, components }) {
-    const { toolkit } = this
+  requestAddChildFeedback({ delta, components, location }) {
+    const { toolkit, component } = this
+    const children = toolkit.children(component)
     const bounds = components.map((moved) => toolkit.bounds(moved).translate(delta))
-    toolkit.root().setState({ errorFeedback: bounds })
+    if (components.some((child) => children.indexOf(child) >= 0 || !child.props.step)) {
+      toolkit.root().setState({ errorFeedback: bounds })
+    } else {
+      toolkit.root().setState({ moveFeedback: bounds })
+      component.setState({ insertionFeedback: this.insertionIndex(children, location) })
+    }
   }
   eraseAddChildFeedback() {
-    this.toolkit.root().setState({ errorFeedback: null })
+    this.component.setState({ insertionFeedback: null })
+    this.toolkit.root().setState({ errorFeedback: null, moveFeedback: null })
   }
 
   eraseMoveChildFeedback() {

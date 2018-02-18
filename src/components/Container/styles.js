@@ -44,4 +44,5 @@ export const laneStyle = {
   alignItems: 'center',
   justifyContent: 'center',
   padding: '5px 7px',
+  minHeight: '30px',
 }

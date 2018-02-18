@@ -1,41 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { Diagram } from 'regef'
 
-import {
-  Diagram,
-  Engine,
-  NodeMouseHandler,
-  ConnectMouseHandler,
-  SingleSelectionMouseHandler,
-  MultiSelectionMouseHandler,
-  CancelMouseHandlersKeyHandler,
-  DeleteKeyHandler,
-} from 'regef'
-
-import store from './state/store'
+import createStore from './state'
+import createEngine from './diagramEngine'
 import Root from './components/Root'
-import DiagramSelectionProvider from './DiagramSelectionProvider'
-
-const engine = new Engine({
-  mouseHandlers: [
-    new NodeMouseHandler(),
-    new ConnectMouseHandler(),
-    new SingleSelectionMouseHandler(),
-    new MultiSelectionMouseHandler(),
-  ],
-  keyHandlers: [
-    new CancelMouseHandlersKeyHandler(),
-    new DeleteKeyHandler(),
-  ],
-  selectionProvider: new DiagramSelectionProvider(),
-})
 
 render(
-  (<Provider store={store}>
-    <Diagram engine={engine}>
+  <Provider store={createStore()}>
+    <Diagram engine={createEngine()}>
       <Root />
     </Diagram>
-  </Provider>),
+  </Provider>,
   document.getElementById('app'),
 )

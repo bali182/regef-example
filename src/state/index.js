@@ -7,4 +7,4 @@ const reducer = combineReducers({
   selection,
 })
 
-export default createStore(reducer)
+export default () => createStore(reducer)

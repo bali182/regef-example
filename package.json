@@ -22,7 +22,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "regef": "github:bali182/regef",
-    "regef-2dmath": "github:bali182/regef-2dmath"
+    "regef-geometry": "github:bali182/regef-geometry"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

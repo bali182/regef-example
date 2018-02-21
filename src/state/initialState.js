@@ -12,10 +12,15 @@ const initial = {
     input: {
       type: 'NODE',
       x: 10,
-      y: 10,
+      y: 130,
       connections: [
         'transform',
       ],
+    },
+    output: {
+      type: 'NODE',
+      x: 600,
+      y: 130,
     },
     transform: {
       type: 'CONTAINER',
@@ -27,7 +32,7 @@ const initial = {
         'reduce',
       ],
       connections: [
-        'output',
+        'transform2',
       ],
     },
     transform2: {
@@ -43,11 +48,7 @@ const initial = {
         'output',
       ],
     },
-    output: {
-      type: 'NODE',
-      x: 200,
-      y: 10,
-    },
+
     filter: {
       type: 'STEP',
     },

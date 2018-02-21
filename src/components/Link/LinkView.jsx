@@ -35,9 +35,9 @@ const LinkView = ({ x1, y1, x2, y2, selected }) => {
       </marker>
     </defs>
     <line
-      x1={coordinates.x1 + 2.5}
+      x1={coordinates.x1 + 1}
       y1={coordinates.y1 + 2.5}
-      x2={coordinates.x2 + 2.5}
+      x2={coordinates.x2 + 1}
       y2={coordinates.y2 + 2.5}
       strokeWidth={1}
       stroke={color}

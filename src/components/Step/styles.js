@@ -9,7 +9,7 @@ export const normalStepStyle = {
   borderRadius: '2px',
   userSelect: 'none',
   MozUserSelect: 'none',
-  fontSize: '.8em',
+  fontSize: '12px',
   minWidth: '40px',
   minHeight: '40px',
   border: '1px solid #ccc',

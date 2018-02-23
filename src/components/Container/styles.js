@@ -7,7 +7,7 @@ export const normalContainerStyle = {
   justifyContent: 'center',
   border: '1px solid #ccc',
   borderRadius: '2px',
-  fontSize: '.8em',
+  fontSize: '14px',
   whiteSpace: 'nowrap',
   userSelect: 'none',
   cursor: 'default',

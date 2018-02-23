@@ -77,7 +77,7 @@ export default class Root extends React.Component {
         const { x1, y1, x2, y2 } = sourceIntersection.lineSegmentTo(targetIntersection)
         return { x1, y1, x2, y2, key }
       })
-      this.setState({ links })
+      this.setState({ links: links.filter((link) => link !== null) })
     }).catch((e) => { throw e })
   }
 

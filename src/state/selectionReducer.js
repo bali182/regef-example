@@ -1,5 +1,5 @@
 import { SET_SELECTION } from './actions'
-import initialState from './initialState'
+import initialState from './initialState.json'
 
 const connectionsReducer = (state = initialState.selection, { type, payload }) => {
   switch (type) {

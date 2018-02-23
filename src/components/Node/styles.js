@@ -9,7 +9,7 @@ export const normalNodeStyle = {
   border: '1px solid #ccc',
   borderRadius: '2px',
   height: '30px',
-  fontSize: '.8em',
+  fontSize: '14px',
   whiteSpace: 'nowrap',
   userSelect: 'none',
   MozUserSelect: 'none',

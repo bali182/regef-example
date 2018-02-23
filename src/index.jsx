@@ -7,11 +7,18 @@ import createStore from './state'
 import createEngine from './diagramEngine'
 import Root from './components/Root'
 
+const rootContainerStyle = {
+  marginTop: '10vh',
+  marginLeft: '10vw',
+}
+
 render(
   <Provider store={createStore()}>
-    <Diagram engine={createEngine()}>
-      <Root />
-    </Diagram>
+    <div style={rootContainerStyle}>
+      <Diagram engine={createEngine()}>
+        <Root />
+      </Diagram>
+    </div>
   </Provider>,
   document.getElementById('app'),
 )

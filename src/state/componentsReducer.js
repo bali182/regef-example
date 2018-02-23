@@ -1,5 +1,5 @@
 import { ADD_CHILDREN, SET_POSITION, DELETE_COMPONENT, ADD_CONNECTION, SET_CHILDREN } from './actions'
-import initialState from './initialState'
+import initialState from './initialState.json'
 
 const insert = (array, index, items) => [
   ...array.slice(0, index),

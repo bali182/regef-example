@@ -8,8 +8,7 @@ import createEngine from './diagramEngine'
 import Root from './components/Root'
 
 const rootContainerStyle = {
-  marginTop: '10vh',
-  marginLeft: '10vw',
+  margin: '10vh',
 }
 
 render(

@@ -4,18 +4,19 @@ export const normalStepStyle = {
   alignContent: 'center',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '3px 5px',
+  padding: '7px 10px',
   textAlign: 'center',
   borderRadius: '2px',
   userSelect: 'none',
   MozUserSelect: 'none',
-  fontSize: '12px',
+  fontSize: '20px',
   minWidth: '40px',
   minHeight: '40px',
   border: '1px solid #ccc',
   cursor: 'default',
   margin: '7px',
   backgroundColor: '#fff',
+  fontWeight: 200,
 }
 
 export const selectedStepStyle = {

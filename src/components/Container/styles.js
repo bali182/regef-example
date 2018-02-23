@@ -7,7 +7,6 @@ export const normalContainerStyle = {
   justifyContent: 'center',
   border: '1px solid #ccc',
   borderRadius: '2px',
-  fontSize: '14px',
   whiteSpace: 'nowrap',
   userSelect: 'none',
   cursor: 'default',
@@ -30,6 +29,8 @@ export const normalTitleStyle = {
   width: '100%',
   userSelect: 'none',
   MozUserSelect: 'none',
+  fontSize: '26px',
+  fontWeight: '400',
 }
 
 export const selectedTitleStyle = {
@@ -43,6 +44,6 @@ export const laneStyle = {
   alignContent: 'center',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '5px 7px',
+  padding: '10px 12px',
   minHeight: '30px',
 }

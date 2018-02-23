@@ -5,16 +5,17 @@ export const normalNodeStyle = {
   alignContent: 'center',
   alignItems: 'center',
   justifyContent: 'center',
-  padding: '5px 10px',
+  padding: '20px 16px',
   border: '1px solid #ccc',
   borderRadius: '2px',
   height: '30px',
-  fontSize: '14px',
   whiteSpace: 'nowrap',
   userSelect: 'none',
   MozUserSelect: 'none',
   cursor: 'default',
   backgroundColor: '#fff',
+  fontSize: '25px',
+  fontWeight: '400',
 }
 
 export const selectedNodeStyle = {

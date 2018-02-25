@@ -1,7 +1,7 @@
 import {
   Engine,
   SelectionProvider,
-  NodeMouseHandler,
+  DragMouseHandler,
   ConnectMouseHandler,
   SingleSelectionMouseHandler,
   MultiSelectionMouseHandler,
@@ -19,7 +19,7 @@ class DiagramSelectionProvider extends SelectionProvider {
 
 const createEngine = () => new Engine({
   mouseHandlers: [
-    new NodeMouseHandler(),
+    new DragMouseHandler(),
     new ConnectMouseHandler(),
     new SingleSelectionMouseHandler(),
     new MultiSelectionMouseHandler(),

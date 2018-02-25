@@ -11,7 +11,7 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.sample', '.css', '.jpg', '.png'],
   },
   module: {
     rules: [
@@ -19,6 +19,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.sample$/,
+        loader: 'raw-loader',
       },
       {
         test: /\.css$/,

@@ -1,12 +1,10 @@
 import React from 'react'
-import { Deck, Slide, Heading, Text, Fill, Link, List, ListItem, Appear, Fit } from 'spectacle'
+import { Deck, Slide, Heading, Text, Link, Appear, Fit } from 'spectacle'
 import createTheme from 'spectacle/lib/themes/default'
-import Demo1 from './demos/Demo1'
 
-const monkeyImg = require('./assets/monkey.png')
-const reactImg = require('./assets/react.png')
-const paintImg = require('./assets/paint.jpg')
-const constructionImg = require('./assets/construction.jpg')
+import DemoFull from './demos/DemoFull'
+
+import images from './assets'
 
 const theme = createTheme(
   {
@@ -41,10 +39,7 @@ class Presentation extends React.Component {
           Workday Studio Team
         </Text>
       </Slide>
-      <Slide bgColor="primary">
-        <Demo1 />
-      </Slide>
-      <Slide bgColor="primary" bgImage={monkeyImg.replace('/', '')} bgDarken={0.5}>
+      <Slide bgColor="primary" bgImage={images.monkey.replace('/', '')} bgDarken={0.5}>
         <Heading size={1} fit caps lineHeight={1} textColor="primary">
           Libraries
         </Heading>
@@ -64,7 +59,7 @@ class Presentation extends React.Component {
         <Text fit bold caps textColor="tertiary" size={1}>Custom DOM handling</Text>
         <Text fit caps size={1}>App inside App</Text>
       </Slide>
-      <Slide bgColor="primary" bgImage={reactImg.replace('/', '')} >
+      <Slide bgColor="primary" bgImage={images.react.replace('/', '')} >
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           Why not just
         </Heading>
@@ -85,7 +80,7 @@ class Presentation extends React.Component {
           </Link>
         </Text>
       </Slide>
-      <Slide bgColor="primary" bgImage={paintImg.replace('/', '')} bgDarken={0.7}>
+      <Slide bgColor="primary" bgImage={images.paint.replace('/', '')} bgDarken={0.7}>
         <Heading size={1} fit caps lineHeight={1} textColor="primary">
           Render...
         </Heading>
@@ -93,13 +88,16 @@ class Presentation extends React.Component {
           ...whatever you want
         </Heading>
       </Slide>
-      <Slide bgColor="primary" bgImage={constructionImg.replace('/', '')} bgDarken={0.7}>
+      <Slide bgColor="primary" bgImage={images.construction.replace('/', '')} bgDarken={0.7}>
         <Heading size={1} fit caps lineHeight={1} textColor="primary">
           Model...
         </Heading>
         <Heading margin="30px 0px 0px" size={1} fit caps lineHeight={1} textColor="primary">
           ...however you want
         </Heading>
+      </Slide>
+      <Slide bgColor="#444">
+        <DemoFull />
       </Slide>
     </Deck>)
   }

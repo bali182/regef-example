@@ -9,12 +9,12 @@ import Root from '../../src/components/Root'
 const store = createStore()
 const engine = createEngine()
 
-store.subscribe(() => console.log(JSON.stringify(store.getState())))
+store.subscribe(() => console.log(store.getState()))
 
-const Demo1 = () => (<Provider store={store}>
+const DemoFull = () => (<Provider store={store}>
   <Diagram engine={engine}>
     <Root />
   </Diagram>
 </Provider>)
 
-export default Demo1
+export default DemoFull

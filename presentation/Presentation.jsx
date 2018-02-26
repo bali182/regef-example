@@ -1,5 +1,5 @@
 import React from 'react'
-import { Deck, Slide, Heading, Text, Link, Appear, Fit } from 'spectacle'
+import { Deck, Slide, Heading, Text, Link, Appear, Fit, Image } from 'spectacle'
 import createTheme from 'spectacle/lib/themes/default'
 
 import DemoFull from './demos/DemoFull'
@@ -24,11 +24,11 @@ class Presentation extends React.Component {
   render() {
     return (<Deck transition={['slide']} theme={theme}>
       <Slide bgColor="primary">
-        <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-          React
-        </Heading>
         <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
-          Flowcharts
+          Diagrams
+        </Heading>
+        <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+          with React
         </Heading>
       </Slide>
       <Slide bgColor="primary">
@@ -99,6 +99,12 @@ class Presentation extends React.Component {
       </Slide>
       <Slide bgColor="#444">
         <DemoFull />
+      </Slide>
+      <Slide bgColor="primary">
+        <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+          Let's build something!
+        </Heading>
+        <Image src={images.bob.replace('/', '')} />
       </Slide>
     </Deck>)
   }

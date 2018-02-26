@@ -39,6 +39,7 @@ class Presentation extends React.Component {
           Workday Studio Team
         </Text>
       </Slide>
+      <Slide bgColor="primary" bgImage={images.studio.replace('/', '')} />
       <Slide bgColor="primary" bgImage={images.monkey.replace('/', '')} bgDarken={0.5}>
         <Heading size={1} fit caps lineHeight={1} textColor="primary">
           Libraries

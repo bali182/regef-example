@@ -30,19 +30,19 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+        loader: 'url-loader?limit=1000&mimetype=image/svg+xml',
       },
       {
         test: /\.png$/,
-        loader: 'url-loader?mimetype=image/png',
+        loader: 'url-loader?limit=1000&mimetype=image/png',
       },
       {
         test: /\.gif$/,
-        loader: 'url-loader?mimetype=image/gif',
+        loader: 'url-loader?limit=1000&mimetype=image/gif',
       },
       {
         test: /\.jpg$/,
-        loader: 'url-loader?mimetype=image/jpg',
+        loader: 'url-loader?limit=1000&mimetype=image/jpg',
       },
     ],
   },

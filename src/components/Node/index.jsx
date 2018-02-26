@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { node } from 'regef'
+import autobind from 'autobind-decorator'
 
 import NodeView from './NodeView'
+import Port from '../Port'
 import NodeEditPolicy from './NodeEditPolicy'
 
 const stateToProps = ({ components, selection }, { id }) => ({
@@ -13,9 +15,33 @@ const stateToProps = ({ components, selection }, { id }) => ({
 @connect(stateToProps)
 @node(NodeEditPolicy)
 export default class Node extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      portVisible: false,
+    }
+  }
+
+  @autobind onMouseEnter() {
+    this.setState({ portVisible: true })
+  }
+
+  @autobind onMouseLeave() {
+    this.setState({ portVisible: false })
+  }
+
   render() {
     const { id, selected } = this.props
     const { x, y } = this.props.node
-    return <NodeView x={x} y={y} id={id} selected={selected} />
+    return (<NodeView
+      x={x}
+      y={y}
+      id={id}
+      selected={selected}
+      onMouseEnter={this.onMouseEnter}
+      onMouseLeave={this.onMouseLeave}
+    >
+      <Port visible={this.state.portVisible} />
+    </NodeView>)
   }
 }

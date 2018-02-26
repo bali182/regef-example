@@ -61,13 +61,14 @@ const componentsReducer = (state = initialState.components, { type, payload }) =
     case ADD_CONNECTION: {
       const { source, target } = payload
       const node = state[source]
+      const connections = node.connections ? node.connections : []
       return {
         ...state,
         [source]: {
           ...node,
-          connections: node.connections.indexOf(target) >= 0
-            ? node.connections
-            : node.connections.concat([target]),
+          connections: connections.indexOf(target) >= 0
+            ? connections
+            : connections.concat([target]),
         },
       }
     }

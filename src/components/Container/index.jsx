@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { node } from 'regef'
+import autobind from 'autobind-decorator'
 
 import ContainerView from './ContainerView'
+import Port from '../Port'
 import Step from '../Step'
 import ContainerEditPolicy from './ContainerEditPolicy'
 import { setChildren, addChildren } from '../../state/actions'
@@ -21,7 +23,16 @@ export default class Container extends React.Component {
     super()
     this.state = {
       insertionFeedback: null,
+      portVisible: false,
     }
+  }
+
+  @autobind onMouseEnter() {
+    this.setState({ portVisible: true })
+  }
+
+  @autobind onMouseLeave() {
+    this.setState({ portVisible: false })
   }
 
   renderChildren() {
@@ -50,8 +61,16 @@ export default class Container extends React.Component {
   render() {
     const { id, selected } = this.props
     const { x, y } = this.props.container
-    return (<ContainerView x={x} y={y} id={id} selected={selected}>
+    return (<ContainerView
+      x={x}
+      y={y}
+      id={id}
+      selected={selected}
+      onMouseEnter={this.onMouseEnter}
+      onMouseLeave={this.onMouseLeave}
+    >
       {this.renderChildren()}
+      <Port visible={this.state.portVisible} />
     </ContainerView>)
   }
 }

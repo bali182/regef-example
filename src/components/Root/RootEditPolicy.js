@@ -55,4 +55,26 @@ export default class RootEditPolicy extends DispatchingEditPolicy {
   eraseAddChildrenFeedback() {
     this.host.setState({ errorFeedback: null })
   }
+
+  requestEndConnectionFeedback({ source, location }) {
+    const { toolkit } = this
+    const parent = toolkit.parent(source)
+    const bounds = toolkit.bounds(parent)
+
+    const centerToLocation = bounds.center().lineSegmentTo(location)
+    const borders = [bounds.top(), bounds.right(), bounds.bottom(), bounds.left()]
+
+    const sourcePoint = borders
+      .map((border) => border.intersection(centerToLocation))
+      .find((intersection) => intersection)
+
+    if (sourcePoint) {
+      const connectionFeedback = sourcePoint.lineSegmentTo(location)
+      this.host.setState({ connectionFeedback })
+    }
+  }
+
+  eraseEndConnectionFeedback() {
+    this.host.setState({ connectionFeedback: null })
+  }
 }

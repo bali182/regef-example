@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { root } from 'regef'
-import { line } from 'regef-geometry'
 
 import RootView from './RootView'
-import { setPosition, setSelection, deleteComponent } from '../../state/actions'
+import { setPosition, setSelection, deleteComponent, addConnection } from '../../state/actions'
 
 import LinkView from '../Link/LinkView'
 import Container from '../Container'
@@ -17,7 +16,7 @@ const stateToProps = ({ components, selection }) => ({
   selection,
 })
 
-const boundActions = { setPosition, setSelection, deleteComponent }
+const boundActions = { setPosition, setSelection, deleteComponent, addConnection }
 
 @connect(stateToProps, boundActions)
 @root(RootEditPolicy)
@@ -28,6 +27,7 @@ export default class Root extends React.Component {
       errorFeedback: null,
       moveFeedback: null,
       selectionFeedback: null,
+      connectionFeedback: null,
       links: null,
     }
   }
@@ -129,6 +129,18 @@ export default class Root extends React.Component {
     }
     return null
   }
+  renderConnectionFeedback() {
+    if (this.state.connectionFeedback) {
+      const { x1, y1, x2, y2 } = this.state.connectionFeedback
+      return (<LinkView
+        x1={x1}
+        y1={y1}
+        x2={x2}
+        y2={y2}
+      />)
+    }
+    return null
+  }
   renderLinks() {
     if (this.state.links) {
       return this.state.links.map(({ x1, y1, x2, y2, key }) => (<LinkView
@@ -148,6 +160,7 @@ export default class Root extends React.Component {
       {this.renderErrorFeedback()}
       {this.renderSelectionFeedback()}
       {this.renderLinks()}
+      {this.renderConnectionFeedback()}
     </RootView>)
   }
 }

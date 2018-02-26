@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bali182/regef-example#readme",
   "dependencies": {
+    "autobind-decorator": "^2.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",

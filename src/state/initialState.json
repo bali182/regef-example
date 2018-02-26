@@ -30,9 +30,6 @@
         "filter",
         "map",
         "reduce"
-      ],
-      "connections": [
-        "transform2"
       ]
     },
     "transform2": {

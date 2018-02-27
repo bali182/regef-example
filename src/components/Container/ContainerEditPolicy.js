@@ -3,7 +3,7 @@ import { DispatchingEditPolicy } from 'regef'
 export default class ContainerEditPolicy extends DispatchingEditPolicy {
   moveChildren({ components, location }) {
     const { toolkit, host } = this
-    const children = toolkit.children(host)
+    const children = toolkit.children(host).filter((comp) => comp.props.step)
     if (!components.every((moved) => children.indexOf(moved) >= 0)) {
       return
     }

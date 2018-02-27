@@ -6,11 +6,9 @@ export default class DisabledAddChildrenEditPolicy extends DispatchingEditPolicy
     if (!isRoot(targetContainer) && !isStep(targetContainer) && !isNode(targetContainer)) {
       return
     }
-    if (components.some((c) => c.props.step)) {
-      this.toolkit.root().setState({
-        errorFeedback: components.map((c) => this.toolkit.bounds(c).translate(delta)),
-      })
-    }
+    this.toolkit.root().setState({
+      errorFeedback: components.map((c) => this.toolkit.bounds(c).translate(delta)),
+    })
   }
 
   eraseAddChildrenFeedback({ targetContainer }) {

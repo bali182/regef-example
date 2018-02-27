@@ -1,11 +1,11 @@
 import {
   Engine,
-  DragMouseHandler,
-  ConnectMouseHandler,
-  SingleSelectionMouseHandler,
-  MultiSelectionMouseHandler,
-  CancelMouseHandlersKeyHandler,
-  DeleteKeyHandler,
+  DragCapability,
+  ConnectCapability,
+  SingleSelectionCapability,
+  MultiSelectionCapability,
+  CancelCapability,
+  DeleteCapability,
 } from 'regef'
 
 import DiagramSelectionProvider from './DiagramSelectionProvider'
@@ -28,15 +28,13 @@ const createEngine = () => new Engine({
     new DeleteComponentsEditPolicy(),
     new DisabledAddChildrenEditPolicy(),
   ],
-  mouseHandlers: [
-    new DragMouseHandler(),
-    new ConnectMouseHandler(),
-    new SingleSelectionMouseHandler(),
-    new MultiSelectionMouseHandler(),
-  ],
-  keyHandlers: [
-    new CancelMouseHandlersKeyHandler(),
-    new DeleteKeyHandler(),
+  capabilities: [
+    new DragCapability(),
+    new ConnectCapability(),
+    new SingleSelectionCapability(),
+    new MultiSelectionCapability(),
+    new CancelCapability(),
+    new DeleteCapability(),
   ],
   selectionProvider: new DiagramSelectionProvider(),
 })

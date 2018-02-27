@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { Diagram } from 'regef'
 
 import createStore from '../../src/state'
-import createEngine from '../../src/diagramEngine'
+import createEngine from '../../src/diagram'
 import Root from '../../src/components/Root'
 
 const store = createStore()

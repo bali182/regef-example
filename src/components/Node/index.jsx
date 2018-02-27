@@ -5,7 +5,6 @@ import autobind from 'autobind-decorator'
 
 import NodeView from './NodeView'
 import Port from '../Port'
-import NodeEditPolicy from './NodeEditPolicy'
 
 const stateToProps = ({ components, selection }, { id }) => ({
   node: components[id],
@@ -13,7 +12,7 @@ const stateToProps = ({ components, selection }, { id }) => ({
 })
 
 @connect(stateToProps)
-@node(NodeEditPolicy)
+@node()
 export default class Node extends React.Component {
   constructor() {
     super()

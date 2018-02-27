@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { Diagram } from 'regef'
 
 import createStore from './state'
-import createEngine from './diagramEngine'
+import createEngine from './diagram'
 import Root from './components/Root'
 
 const rootContainerStyle = {

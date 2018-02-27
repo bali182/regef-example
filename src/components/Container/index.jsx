@@ -6,7 +6,6 @@ import autobind from 'autobind-decorator'
 import ContainerView from './ContainerView'
 import Port from '../Port'
 import Step from '../Step'
-import ContainerEditPolicy from './ContainerEditPolicy'
 import { setChildren, addChildren } from '../../state/actions'
 import LineFeedback from './LineFeedback'
 
@@ -17,7 +16,7 @@ const stateToProps = ({ components, selection }, { id }) => ({
 })
 
 @connect(stateToProps, { setChildren, addChildren })
-@node(ContainerEditPolicy)
+@node()
 export default class Container extends React.Component {
   constructor() {
     super()

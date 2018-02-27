@@ -8,18 +8,18 @@ import { setPosition, setSelection, deleteComponent, addConnection } from '../..
 import LinkView from '../Link/LinkView'
 import Container from '../Container'
 import Node from '../Node'
-import RootEditPolicy from './RootEditPolicy'
 import { DragFeedback, SelectionFeedback, ErrorFeedback } from './RectFeedback'
 
 const stateToProps = ({ components, selection }) => ({
   components,
   selection,
+  root: components.root,
 })
 
 const boundActions = { setPosition, setSelection, deleteComponent, addConnection }
 
 @connect(stateToProps, boundActions)
-@root(RootEditPolicy)
+@root()
 export default class Root extends React.Component {
   constructor() {
     super()
@@ -82,8 +82,7 @@ export default class Root extends React.Component {
   }
 
   renderChildren() {
-    const { components } = this.props
-    const { root: rootComponent } = this.props.components
+    const { components, root: rootComponent } = this.props
     return rootComponent.children.map((id) => {
       const component = components[id]
       switch (component.type) {

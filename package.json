@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "presentation": "webpack-dev-server --config ./webpack.presentation.config.js",
-    "liveCodingDemo": "webpack-dev-server --config ./webpack.liveCodingDemo.config.js",
-    "build-pres": "webpack --config ./webpack.presentation.config.js"
+    "presentation": "webpack-dev-server --config ./webpack.presentation.config.js"
   },
   "repository": {
     "type": "git",

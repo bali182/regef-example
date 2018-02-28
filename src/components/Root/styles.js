@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const rootStyle = {
   width: '100%',
   minHeight: '400px',

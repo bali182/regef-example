@@ -1,12 +1,15 @@
 import { DispatchingEditPolicy } from 'regef'
-import { isContainer, isNode, isRoot } from './typeUtils'
+import { isContainer, isNode, isRoot, isPort, isStep } from './typeUtils'
 
 export default class ConnectComponentsEditPolicy extends DispatchingEditPolicy {
-  endConnection({ source: port, target }) {
+  endConnection({ source: port, target: rawTarget }) {
     const { toolkit } = this
-    if (!isContainer(target) && !isNode(target)) {
+    if (!isContainer(rawTarget) && !isNode(rawTarget) && !isPort(rawTarget) && !isStep(rawTarget)) {
       return
     }
+    const target = isNode(rawTarget) || isContainer(rawTarget)
+      ? rawTarget
+      : toolkit.parent(rawTarget)
     const source = toolkit.parent(port)
     toolkit.root().props.addConnection({
       source: source.props.id,
@@ -15,11 +18,20 @@ export default class ConnectComponentsEditPolicy extends DispatchingEditPolicy {
   }
 
   requestEndConnectionFeedback(intent) {
-    const { target } = intent
+    const { source, target, location } = intent
     if (isRoot(target)) {
-      this.toolkit.root().setState({ connectionFeedback: this.connectionWithLocation(intent) })
+      this.toolkit.root().setState({
+        connectionFeedback: this.connectionWithLocation(source, location),
+      })
     } else if (isContainer(target) || isNode(target)) {
-      this.toolkit.root().setState({ connectionFeedback: this.connectionWithTarget(intent) })
+      this.toolkit.root().setState({
+        connectionFeedback: this.connectionWithTarget(source, target),
+      })
+    } else if (isPort(target) || isStep(target)) {
+      const parent = this.toolkit.parent(target)
+      this.toolkit.root().setState({
+        connectionFeedback: this.connectionWithTarget(source, parent),
+      })
     }
   }
 
@@ -27,7 +39,7 @@ export default class ConnectComponentsEditPolicy extends DispatchingEditPolicy {
     this.toolkit.root().setState({ connectionFeedback: null })
   }
 
-  connectionWithTarget({ source, target }) {
+  connectionWithTarget(source, target) {
     const { toolkit } = this
     const srcBounds = toolkit.bounds(toolkit.parent(source))
     const tgtBounds = toolkit.bounds(target)
@@ -50,7 +62,7 @@ export default class ConnectComponentsEditPolicy extends DispatchingEditPolicy {
     return null
   }
 
-  connectionWithLocation({ source, location }) {
+  connectionWithLocation(source, location) {
     const { toolkit } = this
     const parent = toolkit.parent(source)
     const bounds = toolkit.bounds(parent)

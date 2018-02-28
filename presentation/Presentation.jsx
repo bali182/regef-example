@@ -56,9 +56,11 @@ class Presentation extends React.Component {
         </Appear>
       </Slide>
       <Slide bgColor="primary">
-        <Text fit caps size={1}>Custom APIs</Text>
-        <Text fit bold caps textColor="tertiary" size={1}>Custom DOM handling</Text>
-        <Text fit caps size={1}>App inside App</Text>
+        <Text fit caps bold size={1}>Custom DOM handling</Text>
+        <Appear><Text fit caps size={1} textColor="tertiary">Unclear webpack integration</Text></Appear>
+        <Appear><Text fit caps bold size={1}>Not open source</Text></Appear>
+        <Appear><Text fit caps size={1} textColor="tertiary">Restrictive rendering or model</Text></Appear>
+        <Appear><Text fit caps bold size={1}>Unmaintained</Text></Appear>
       </Slide>
       <Slide bgColor="primary" bgImage={images.react.replace('/', '')} >
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">
@@ -102,7 +104,7 @@ class Presentation extends React.Component {
       </Slide>
       <Slide bgColor="primary">
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-          Let's build something!
+          Let&#39;s build something!
         </Heading>
         <Image src={images.bob.replace('/', '')} />
       </Slide>

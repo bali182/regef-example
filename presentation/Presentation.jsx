@@ -32,6 +32,12 @@ class Presentation extends React.Component {
         </Heading>
       </Slide>
       <Slide bgColor="primary">
+        <Image src={images.chart.replace('/', '')} />
+        <Heading size={1} fit caps lineHeight={1} textColor="red">
+          Not this
+        </Heading>
+      </Slide>
+      <Slide bgColor="primary">
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           Balázs Édes
         </Heading>
@@ -99,12 +105,12 @@ class Presentation extends React.Component {
           ...however you want
         </Heading>
       </Slide>
-      <Slide bgColor="#ccc">
+      <Slide bgColor="primary">
         <DemoFull />
       </Slide>
       <Slide bgColor="primary">
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-          Let&#39;s build something!
+          How is this built?
         </Heading>
         <Image src={images.bob.replace('/', '')} />
       </Slide>

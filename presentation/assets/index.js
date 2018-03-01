@@ -4,6 +4,7 @@ const paint = require('./paint.jpg')
 const construction = require('./construction.jpg')
 const studio = require('./studio.gif')
 const bob = require('./bob.jpg')
+const chart = require('./chart.png')
 
 const images = {
   monkey,
@@ -12,6 +13,7 @@ const images = {
   construction,
   studio,
   bob,
+  chart,
 }
 
 export default images

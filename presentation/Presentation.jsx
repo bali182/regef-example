@@ -99,7 +99,7 @@ class Presentation extends React.Component {
           ...however you want
         </Heading>
       </Slide>
-      <Slide bgColor="#444">
+      <Slide bgColor="#ccc">
         <DemoFull />
       </Slide>
       <Slide bgColor="primary">

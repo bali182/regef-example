@@ -2,7 +2,7 @@ import { DispatchingEditPolicy } from 'regef'
 import { isRoot, isStep, isNode } from './typeUtils'
 
 export default class DisabledAddChildrenEditPolicy extends DispatchingEditPolicy {
-  requestAddChildrenFeedback({ components, delta, targetContainer }) {
+  requestAddFeedback({ components, delta, targetContainer }) {
     if (!isRoot(targetContainer) && !isStep(targetContainer) && !isNode(targetContainer)) {
       return
     }
@@ -11,7 +11,7 @@ export default class DisabledAddChildrenEditPolicy extends DispatchingEditPolicy
     })
   }
 
-  eraseAddChildrenFeedback({ targetContainer }) {
+  eraseAddFeedback({ targetContainer }) {
     if (!isRoot(targetContainer) && !isStep(targetContainer) && !isNode(targetContainer)) {
       return
     }

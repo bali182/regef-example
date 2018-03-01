@@ -2,7 +2,7 @@ import { DispatchingEditPolicy } from 'regef'
 import { isRoot } from './typeUtils'
 
 export default class MoveRootChildrenEditPolicy extends DispatchingEditPolicy {
-  moveChildren({ components, delta, container }) {
+  move({ components, delta, container }) {
     if (!isRoot(container)) {
       return
     }
@@ -16,7 +16,7 @@ export default class MoveRootChildrenEditPolicy extends DispatchingEditPolicy {
     })
   }
 
-  requestMoveChildrenFeedback({ components, delta, container }) {
+  requestMoveFeedback({ components, delta, container }) {
     if (!isRoot(container)) {
       return
     }
@@ -25,7 +25,7 @@ export default class MoveRootChildrenEditPolicy extends DispatchingEditPolicy {
     })
   }
 
-  eraseMoveChildrenFeedback({ container }) {
+  eraseMoveFeedback({ container }) {
     if (!isRoot(container)) {
       return
     }

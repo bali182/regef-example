@@ -2,7 +2,7 @@ import { DispatchingEditPolicy } from 'regef'
 import { isContainer } from './typeUtils'
 
 export default class MoveContainerChildrenEditPolicy extends DispatchingEditPolicy {
-  moveChildren({ components, location, container }) {
+  move({ components, location, container }) {
     if (!isContainer(container)) {
       return
     }
@@ -28,7 +28,7 @@ export default class MoveContainerChildrenEditPolicy extends DispatchingEditPoli
     })
   }
 
-  requestMoveChildrenFeedback({ location, delta, components, container }) {
+  requestMoveFeedback({ location, delta, components, container }) {
     if (!isContainer(container)) {
       return
     }
@@ -43,7 +43,7 @@ export default class MoveContainerChildrenEditPolicy extends DispatchingEditPoli
     }
   }
 
-  eraseMoveChildrenFeedback({ container }) {
+  eraseMoveFeedback({ container }) {
     if (!isContainer(container)) {
       return
     }

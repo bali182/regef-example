@@ -3,7 +3,7 @@ import { isContainer } from './typeUtils'
 
 
 export default class AddContainerChildrenEditPolicy extends DispatchingEditPolicy {
-  addChildren({ components, location, targetContainer }) {
+  add({ components, location, targetContainer }) {
     if (!isContainer(targetContainer)) {
       return
     }
@@ -20,7 +20,7 @@ export default class AddContainerChildrenEditPolicy extends DispatchingEditPolic
     })
   }
 
-  requestAddChildrenFeedback({ delta, components, location, targetContainer }) {
+  requestAddFeedback({ delta, components, location, targetContainer }) {
     if (!isContainer(targetContainer)) {
       return
     }
@@ -33,7 +33,7 @@ export default class AddContainerChildrenEditPolicy extends DispatchingEditPolic
       targetContainer.setState({ insertionFeedback: this.insertionIndex(children, location) })
     }
   }
-  eraseAddChildrenFeedback({ targetContainer }) {
+  eraseAddFeedback({ targetContainer }) {
     if (!isContainer(targetContainer)) {
       return
     }

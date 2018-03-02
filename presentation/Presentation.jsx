@@ -46,23 +46,11 @@ class Presentation extends React.Component {
         </Text>
       </Slide>
       <Slide bgColor="primary" bgImage={images.studio.replace('/', '')} />
-      <Slide bgColor="primary" bgImage={images.monkey.replace('/', '')} bgDarken={0.5}>
-        <Heading size={1} fit caps lineHeight={1} textColor="primary">
+      <Slide bgColor="primary">
+        <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
           Libraries
         </Heading>
-        <Appear>
-          <Fit>
-            <Heading margin="30px 0px 0px" size={1} fit caps lineHeight={1} textColor="primary">
-              Do you really
-            </Heading>
-            <Heading size={1} fit caps lineHeight={1} textColor="primary">
-              want that banana?
-            </Heading>
-          </Fit>
-        </Appear>
-      </Slide>
-      <Slide bgColor="primary">
-        <Text fit caps bold size={1}>Custom DOM handling</Text>
+        <Appear><Text fit caps bold size={1}>Custom DOM handling</Text></Appear>
         <Appear><Text fit caps size={1} textColor="tertiary">Unclear webpack integration</Text></Appear>
         <Appear><Text fit caps bold size={1}>Not open source</Text></Appear>
         <Appear><Text fit caps size={1} textColor="tertiary">Restrictive rendering or model</Text></Appear>

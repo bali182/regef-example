@@ -7,7 +7,7 @@ import createEngine from '../../src/diagram'
 import Root from '../../src/components/Root'
 
 const store = createStore()
-const engine = createEngine()
+const engine = createEngine(store)
 
 store.subscribe(() => console.log(store.getState()))
 

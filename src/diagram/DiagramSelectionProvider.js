@@ -2,8 +2,9 @@ import { SelectionProvider } from 'regef'
 
 export default class DiagramSelectionProvider extends SelectionProvider {
   selection() {
-    const ids = this.toolkit.root().props.selection
+    const store = this.dependencies.store
+    const { selection } = store.getState()
     return this.toolkit.nodes()
-      .filter(({ props: { id } }) => ids.indexOf(id) >= 0)
+      .filter(({ props: { id } }) => selection.indexOf(id) >= 0)
   }
 }

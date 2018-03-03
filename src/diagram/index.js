@@ -1,3 +1,4 @@
+import { bindActionCreators } from 'redux'
 import {
   Engine,
   DragCapability,
@@ -7,6 +8,8 @@ import {
   CancelCapability,
   DeleteCapability,
 } from 'regef'
+
+import { addChildren, addConnection, deleteComponent, setChildren, setPosition, setSelection } from '../state/actions'
 
 import DiagramSelectionProvider from './DiagramSelectionProvider'
 
@@ -18,7 +21,7 @@ import MoveRootChildrenEditPolicy from './MoveRootChildrenEditPolicy'
 import DeleteComponentsEditPolicy from './DeleteComponentsEditPolicy'
 import DisabledAddChildrenEditPolicy from './DisabledAddChildrenEditPolicy'
 
-const createEngine = () => new Engine({
+const createEngine = (store) => new Engine({
   editPolicies: [
     new AddContainerChildrenEditPolicy(),
     new MoveContainerChildrenEditPolicy(),
@@ -37,6 +40,13 @@ const createEngine = () => new Engine({
     new DeleteCapability(),
   ],
   selectionProvider: new DiagramSelectionProvider(),
+  dependencies: {
+    store,
+    ...bindActionCreators(
+      { addChildren, addConnection, deleteComponent, setChildren, setPosition, setSelection },
+      (action) => store.dispatch(action)
+    )
+  }
 })
 
 export default createEngine

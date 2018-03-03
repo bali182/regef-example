@@ -11,7 +11,7 @@ export default class ConnectComponentsEditPolicy extends DispatchingEditPolicy {
       ? rawTarget
       : toolkit.parent(rawTarget)
     const source = toolkit.parent(port)
-    toolkit.root().props.addConnection({
+    this.dependencies.addConnection({
       source: source.props.id,
       target: target.props.id,
     })

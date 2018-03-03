@@ -13,7 +13,7 @@ export default class AddContainerChildrenEditPolicy extends DispatchingEditPolic
     }
     const index = this.insertionIndex(children, location)
     const ids = components.map((child) => child.props.id)
-    targetContainer.props.addChildren({
+    this.dependencies.addChildren({
       containerId: targetContainer.props.id,
       children: ids,
       index,

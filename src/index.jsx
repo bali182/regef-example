@@ -11,10 +11,13 @@ const rootContainerStyle = {
   margin: '10vh',
 }
 
+const store = createStore()
+const engine = createEngine(store)
+
 render(
-  <Provider store={createStore()}>
+  <Provider store={store}>
     <div style={rootContainerStyle}>
-      <Diagram engine={createEngine()}>
+      <Diagram engine={engine}>
         <Root />
       </Diagram>
     </div>

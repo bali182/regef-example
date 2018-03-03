@@ -22,7 +22,7 @@ export default class MoveContainerChildrenEditPolicy extends DispatchingEditPoli
       before === null ? null : before.props.id,
       after === null ? null : after.props.id,
     )
-    container.props.setChildren({
+    this.dependencies.setChildren({
       id: container.props.id,
       children: newState,
     })

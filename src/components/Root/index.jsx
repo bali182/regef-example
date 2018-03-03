@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { root } from 'regef'
 
 import RootView from './RootView'
-import { setPosition, setSelection, deleteComponent, addConnection } from '../../state/actions'
 
 import LinkView from '../Link/LinkView'
 import Container from '../Container'
@@ -16,9 +15,7 @@ const stateToProps = ({ components, selection }) => ({
   root: components.root,
 })
 
-const boundActions = { setPosition, setSelection, deleteComponent, addConnection }
-
-@connect(stateToProps, boundActions)
+@connect(stateToProps)
 @root()
 export default class Root extends React.Component {
   constructor() {

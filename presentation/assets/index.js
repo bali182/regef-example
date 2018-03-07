@@ -4,6 +4,7 @@ const construction = require('./construction.jpg')
 const studio = require('./studio.gif')
 const bob = require('./bob.jpg')
 const chart = require('./chart.png')
+const computer = require('./computer.jpg')
 
 const images = {
   react,
@@ -12,6 +13,7 @@ const images = {
   studio,
   bob,
   chart,
+  computer,
 }
 
 export default images

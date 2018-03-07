@@ -1,5 +1,5 @@
 import React from 'react'
-import { Deck, Slide, Heading, Text, Link, Appear, Fit, Image } from 'spectacle'
+import { Deck, Slide, Heading, Text, Link, Appear, Image } from 'spectacle'
 import createTheme from 'spectacle/lib/themes/default'
 
 import DemoFull from './demos/DemoFull'
@@ -77,6 +77,9 @@ class Presentation extends React.Component {
           </Link>
         </Text>
       </Slide>
+      <Slide bgColor="primary">
+        <DemoFull />
+      </Slide>
       <Slide bgColor="primary" bgImage={images.paint.replace('/', '')} bgDarken={0.7}>
         <Heading size={1} fit caps lineHeight={1} textColor="primary">
           Render...
@@ -93,8 +96,13 @@ class Presentation extends React.Component {
           ...however you want
         </Heading>
       </Slide>
-      <Slide bgColor="primary">
-        <DemoFull />
+      <Slide bgColor="primary" bgImage={images.computer.replace('/', '')} bgDarken={0.9}>
+        <Heading size={1} fit caps lineHeight={1} textColor="primary">
+          Handle...
+        </Heading>
+        <Heading margin="30px 0px 0px" size={1} fit caps lineHeight={1} textColor="primary">
+          ...intentions
+        </Heading>
       </Slide>
       <Slide bgColor="primary">
         <Heading size={1} fit caps lineHeight={1} textColor="secondary">

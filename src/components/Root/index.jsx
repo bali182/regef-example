@@ -77,7 +77,6 @@ export default class Root extends React.Component {
       this.setState({ links: links.filter((link) => link !== null) })
     }).catch((e) => { throw e })
   }
-
   renderChildren() {
     const { components, root: rootComponent } = this.props
     return rootComponent.children.map((id) => {

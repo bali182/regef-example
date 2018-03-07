@@ -57,8 +57,7 @@ export default class Container extends React.Component {
   }
 
   render() {
-    const { id, selected } = this.props
-    const { x, y } = this.props.container
+    const { id, selected, container: { x, y } } = this.props
     return (<ContainerView
       x={x}
       y={y}

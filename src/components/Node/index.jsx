@@ -30,8 +30,7 @@ export default class Node extends React.Component {
   }
 
   render() {
-    const { id, selected } = this.props
-    const { x, y } = this.props.node
+    const { id, selected, node: { x, y } } = this.props
     return (<NodeView
       x={x}
       y={y}

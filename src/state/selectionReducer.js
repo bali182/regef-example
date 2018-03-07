@@ -1,7 +1,6 @@
 import { SET_SELECTION } from './actions'
-import initialState from './initialState.json'
 
-const connectionsReducer = (state = initialState.selection, { type, payload }) => {
+const connectionsReducer = (state = [], { type, payload }) => {
   switch (type) {
     case SET_SELECTION: {
       const { selection } = payload

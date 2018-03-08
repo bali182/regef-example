@@ -7,11 +7,11 @@ export default class MoveRootChildrenEditPolicy extends DispatchingEditPolicy {
       return
     }
     components.forEach((component) => {
-      const { x, y } = this.toolkit.bounds(component).location()
+      const { x, y } = this.toolkit.bounds(component).location().translate(delta)
       this.dependencies.setPosition({
         id: component.props.id,
-        x: Math.round(x + delta.x),
-        y: Math.round(y + delta.y),
+        x,
+        y,
       })
     })
   }

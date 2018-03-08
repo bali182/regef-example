@@ -22,15 +22,6 @@ import DeleteComponentsEditPolicy from './DeleteComponentsEditPolicy'
 import DisabledAddChildrenEditPolicy from './DisabledAddChildrenEditPolicy'
 
 const createEngine = (store) => new Engine({
-  editPolicies: [
-    new AddContainerChildrenEditPolicy(),
-    new MoveContainerChildrenEditPolicy(),
-    new ConnectComponentsEditPolicy(),
-    new SelectComponentsEditPolicy(),
-    new MoveRootChildrenEditPolicy(),
-    new DeleteComponentsEditPolicy(),
-    new DisabledAddChildrenEditPolicy(),
-  ],
   capabilities: [
     new DragCapability(),
     new ConnectCapability(),
@@ -39,14 +30,23 @@ const createEngine = (store) => new Engine({
     new CancelCapability(),
     new DeleteCapability(),
   ],
+  editPolicies: [
+    new MoveRootChildrenEditPolicy(),
+    new AddContainerChildrenEditPolicy(),
+    new MoveContainerChildrenEditPolicy(),
+    new ConnectComponentsEditPolicy(),
+    new SelectComponentsEditPolicy(),
+    new DeleteComponentsEditPolicy(),
+    new DisabledAddChildrenEditPolicy(),
+  ],
   selectionProvider: new DiagramSelectionProvider(),
   dependencies: {
     store,
     ...bindActionCreators(
       { addChildren, addConnection, deleteComponent, setChildren, setPosition, setSelection },
-      (action) => store.dispatch(action)
-    )
-  }
+      (action) => store.dispatch(action),
+    ),
+  },
 })
 
 export default createEngine
